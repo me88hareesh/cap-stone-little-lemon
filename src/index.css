@@ -11,3 +11,90 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.headergrid {
+  display: grid;
+  /* grid-template-columns: repeat(auto-fill,
+    minmax(200px, 1fr)); */
+    grid-template-columns: 500px 500px;
+  /* grid-gap: 0px */
+}
+.headergrid> .headergrid-nav {
+  font-size: 20px;
+  padding: 1rem;
+  color: black;
+  text-align: left;
+  background: white;
+}
+
+.headergrid> .headergrid-logo{
+  /* align-items: center; */
+  /* border: 1px solid green; */
+  padding: 2rem;
+}
+
+.headergrid>.headergrid-nav>ul>li {
+  font-size: 20px;
+  padding: 1rem;
+  color: black;
+  text-align:left;
+  list-style: none;
+  display: inline;
+  /* background: blue; */
+}
+
+
+.maingrid{
+  display: grid;
+  grid-template-columns: 500px 500px;
+  /* grid-template-rows: 4; */
+   /* grid-row:span 1 ;
+  grid-column: span 2 ; */
+}
+
+.maingrid> .hero-content{
+  padding: 2rem 0rem 2rem 12rem;
+  /* padding-left: 5rem; */
+    border: 1px solid green;
+    /* text-align: right; */
+
+}
+.hero-content-title{
+  font-size: 25px;
+  font-weight: bold;
+}
+.hero-content-location{
+  font-size: 15px;
+  font-weight: bold;
+
+}
+.hero-content-button{
+  margin-top: 5px;
+  border: 0;
+  background: black;
+  color: white;
+  width: 200px;
+  height: 50px;
+  box-shadow: none;
+  border-radius: 0px;
+ 
+}
+.maingrid> .hero-image{
+  padding: 2rem;
+    border: 1px solid green;
+    text-align: left;
+}
+/* .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,
+    minmax(200px, 1fr));
+  grid-gap: 10px
+}
+
+.grid>div {
+  font-size: 20px;
+  padding: 1rem;
+  color: black;
+  text-align: center;
+  background: blue;
+} */
