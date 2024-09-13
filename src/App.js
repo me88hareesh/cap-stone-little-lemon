@@ -15,21 +15,6 @@ import Confirmation from './components/little-lemon-pages/Confirmation'
 
 function App() {
 
-  // <Route  path="/" element={<Homepage />} />
-  
-  // <Route path="/about" element={<About />} />
-
-  // <Route path="/reservations" element={<Reservation />} />
-
-  // <Route path="/order" element={<Order />} />
-  // <Route path="/login" element={<Login />} />
-
-  // <Route path="/confirmation" element={<Confirmation />} />
-
-
-
-// return routes;
-
   return (
     <>
 

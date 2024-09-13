@@ -27,15 +27,15 @@ export default function Navigation(props) {
             <Link className="hover-effect" href='' to="/about">
                 <h1>About</h1>
             </Link>
-            <a
+            <Link className="hover-effect" href='' to="/menu">
+                <h1>Menu</h1>
+            </Link>
+            {/* <a 
                 className="hover-effect"
-                href=''
-                //   href={require("../assets/menu.webp")}
-                target="_blank"
-                rel="noreferrer"
+                href='' to='/menu'
             >
                 <h1>Menu</h1>
-            </a>
+            </a> */}
             <Link className="hover-effect" to="/reservations">
                 <h1>Reservations</h1>
             </Link>

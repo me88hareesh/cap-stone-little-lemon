@@ -6,6 +6,7 @@ import Reservation from '../components/little-lemon-pages/BookingPage'
 import Order from '../components/little-lemon-pages/Order'
 import Login from '../components/little-lemon-pages/Login'
 import Confirmation from '../components/little-lemon-pages/Confirmation'
+import Specials from "./little-lemon-sections/heading-pages/Specials";
 
 
 
@@ -15,7 +16,8 @@ export default function Routing() {
         <Route  path="/" element={<Homepage />} />
   
         <Route path="/about" element={<About />} />
-  
+        <Route path="/menu" element={<Specials />} />
+
         <Route path="/reservations" element={<Reservation />} />
   
         <Route path="/order" element={<Order />} />
