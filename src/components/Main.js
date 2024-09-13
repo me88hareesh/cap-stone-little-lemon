@@ -3,7 +3,7 @@ import resturantImage from '../images/the-rice-boat.jpg';
 
 export default function Main(params) {
     return (<>
-        <main>
+        {/* <main>
             <div className="maingrid">
                 <div className="hero-content">
                     <div><span className='hero-content-title'>Little Lemon</span></div>
@@ -21,6 +21,7 @@ export default function Main(params) {
                 
             </div>
 
-        </main>
+        </main> */}
+        
     </>)
 }
