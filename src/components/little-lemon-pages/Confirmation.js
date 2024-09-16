@@ -21,11 +21,9 @@ export default function Confirmation(params) {
             <div>
                 <label htmlFor="fName">Date:</label> <span><b>{from.primaryData.date}</b></span>
             </div>
-
-            {/* <div>
-                <label htmlFor="fName">Time:</label> <span><b>{from.primarydata.time}</b></span>
-
-            </div> */}
+            <div>
+                <label htmlFor="time">Time:</label> <span><b>{from.primaryData.time}</b></span>
+            </div>
 
             <div>
                 <label htmlFor="fName">No of guests:</label> <span><b>{from.primaryData.people}</b></span>

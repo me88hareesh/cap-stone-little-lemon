@@ -1,78 +1,109 @@
 
 import { useState } from "react";
 import { Link, useLocation } from 'react-router-dom';
+import { Formik, Field, Form, ErrorMessage, useFormik } from 'formik';
+import { useNavigate } from "react-router-dom";
+import * as Yup from 'yup';
 
 export default function BookingFornContactAndPayment(props) {
+
+    let navigate = useNavigate();
+    const location = useLocation();
+    const { from } = location.state;
+    let primaryData = from;
+
+    console.log(from);
 
     let btnStyles = {
         width: '200px',
         height: '30px'
     }
-    const [fName, setFName] = useState("");
-    const [lName, setLName] = useState("");
+    const [firstName, setFName] = useState("");
+    const [lastName, setLName] = useState("");
     const [email, setEmail] = useState("");
     const [tel, setTel] = useState("");
     const [creditCardNo, setCreditCardNumber] = useState("");
-    const [otp, setOtp] = useState("");
+    // const [otp, setOtp] = useState("");
 
-
-    const location = useLocation();
-    const { from } = location.state;
-    let primaryData = from;
     let contactData = {
-        firstName: fName,
-        lstName: lName,
+        firstName: firstName,
+        lastName: lastName,
         email: email,
         contact: tel
     }
-    console.log(from);
-    // function handleDateChange(e) {
-    //   setDate(e.target.value);
 
-    //   var stringify = e.target.value;
-    //   const date = new Date(stringify);
+    const DisplayingErrorMessagesSchema = Yup.object().shape({
+        firstName: Yup.string().required("Required"),
+        lastName: Yup.string().required("Required"),
+        email: Yup.string().required("Required"),
+        tel: Yup.string().required("Required"),
+        creditCardNo: Yup.string().required("Required"),
+        // otp: Yup.string().required("Required")
+    });
 
-    //   props.updateTimes(date);
 
-    //   setFinalTime(props.availableTimes?.map((times) => <option>{times}</option>));
-    // }
+
+    const { values, handleBlur, handleChange, handleSubmit, errors } = useFormik({
+        initialValues: {
+            firstName: "",
+            lastName: '',
+            tel: "",
+            creditCardNo: 1,
+            // otp: ""
+        },
+
+        validationSchema: DisplayingErrorMessagesSchema,
+
+        onSubmit: values => {
+            navigate("/confirmation", { state: { from: { primaryData:primaryData, contactData:contactData } } });
+        },
+    });
+
+
+
 
     return (
-        <form className="reservation-form">
+        <form autoComplete="off" onSubmit={handleSubmit} className="reservation-form">
             <div style={{ border: '2px solid wheat', fontSize: '20px', backgroundColor: 'wheat' }}>
                 <p><b>We always have a seat for your !!!</b>
                     <br></br>
-                    <b style={{color:"green"}}>Confirm your booking.</b>
+                    <b style={{ color: "green" }}>Confirm your booking.</b>
                 </p>
 
             </div>
             <div>
                 <label htmlFor="fName">First Name</label> <br></br>
+
                 <input
                     type="text"
-                    id="fName"
+                    id="firstName"
                     style={btnStyles}
                     placeholder="First Name"
-                    required
                     minLength={2}
                     maxLength={50}
-                    value={fName}
-                    onChange={(e) => setFName(e.target.value)}
+                    value={values.firstName}
+                    onChange={handleChange}
                 ></input>
+                {errors.firstName && (
+                    <p className="input-feedback">{errors.firstName}</p>
+                )}
             </div>
 
             <div>
-                <label htmlFor="lName">Last Name</label> <br></br>
+                <label htmlFor="lastName">Last Name</label> <br></br>
                 <input
                     type="text"
-                    id="lName"
+                    id="lastName"
                     style={btnStyles}
                     placeholder="Last Name"
                     minLength={2}
                     maxLength={50}
-                    value={lName}
-                    onChange={(e) => setLName(e.target.value)}
+                    value={values.lastName}
+                    onChange={handleChange}
                 ></input>
+                {errors.lastName && (
+                    <p className="input-feedback">{errors.lastName}</p>
+                )}
             </div>
 
             <div>
@@ -82,34 +113,58 @@ export default function BookingFornContactAndPayment(props) {
                     id="email"
                     style={btnStyles}
                     placeholder="Email"
-                    value={email}
-                    required
+                    value={values.email}
                     minLength={4}
                     maxLength={200}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={handleChange}
                 ></input>
+                {errors.email && (
+                    <p className="input-feedback">{errors.email}</p>
+                )}
             </div>
 
             <div>
                 <label htmlFor="phonenum">Phone Number</label> <br></br>
                 <input
-                    type="tel"
-                    id="phonenum"
+                    type="text"
+                    id="tel"
                     style={btnStyles}
                     placeholder="(xxx)-xxx-xxxx"
-                    value={tel}
-                    required
+                    value={values.tel}
                     minLength={10}
                     maxLength={25}
-                    onChange={(e) => setTel(e.target.value)}
+                    onChange={handleChange}
                 ></input>
+                 {errors.tel && (
+                    <p className="input-feedback">{errors.tel}</p>
+                )}
+            </div>
+
+            <div>
+                <label htmlFor="creditcard">Credit Card Number</label> <br></br>
+                <input
+                    type="text"
+                    id="creditCardNo"
+                    style={btnStyles}
+                    placeholder="(xxx)-xxx-xxxx"
+                    value={values.creditCardNo}
+                    minLength={16}
+                    maxLength={16}
+                    onChange={handleChange}
+                ></input>
+                 {errors.creditCardNo && (
+                    <p className="input-feedback">{errors.creditCardNo}</p>
+                )}
             </div>
 
 
             <div>
-                <br></br>
+                {/* <br></br>
                 <Link className="action-button" to="/confirmation" state={{ from: { primaryData, contactData } }} >
-                    Confirm</Link>
+                    Confirm</Link> */}
+                <div>
+                    <button className="action-button" type="submit">Confirm</button>
+                </div>
 
             </div>
         </form>

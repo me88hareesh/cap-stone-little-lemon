@@ -193,17 +193,23 @@ export default function BookingFormReserve(props) {
 
         onSubmit: values => {
             // alert(JSON.stringify(values, null, 2));
-            // alert(values.occasion);
+            // alert(values.finalTime);
 
-            navigate("/bookingForContact", { state: { from: { occasion: values.occasion, preferences: values.preferences, people: values.people, date: values.diningDate } } });
+            navigate("/bookingForContact", { state: { from: { occasion: values.occasion, preferences: values.preferences, people: values.people, date: values.diningDate, time: values.finalTime } } });
         },
     });
 
     console.log(errors);
 
     return (
-        <form onSubmit={handleSubmit} className="reservation-form">
+        <form autoComplete="off" onSubmit={handleSubmit} className="reservation-form">
 
+            <div style={{ border: '2px solid wheat', fontSize: '20px', backgroundColor: 'wheat' }}>
+                <p><b>We always have a seat for your !!!</b>
+                    <br></br>
+                    <b style={{ color: "green" }}>Book your table reservation below.</b>
+                </p>
+            </div>
             <div>
                 <label htmlFor="date">Select Date</label> <br></br>
                 <input
@@ -221,8 +227,13 @@ export default function BookingFormReserve(props) {
             </div>
 
             <div>
-                <label htmlFor="time">Select Time</label> <br></br>
-                <select id="time" key={finalTime} style={btnStyles} required >
+                <label htmlFor="finalTime">Select Time</label> <br></br>
+                <select id="finalTime"
+                    value={values.finalTime}
+                    style={btnStyles}
+                    required
+                    onChange={handleChange}
+                >
                     {finalTime}
                 </select>
             </div>
@@ -286,7 +297,7 @@ export default function BookingFormReserve(props) {
 
 
             <div>
-                <button type="submit">Book Table</button>
+                <button className="action-button" type="submit">Book Table</button>
             </div>
         </form>
     )
