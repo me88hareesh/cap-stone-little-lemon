@@ -649,3 +649,7 @@ footer > menu {
 .carousel > .thumbs-wrapper {
   display: none;
 }
+
+.input-feedback{
+  color: red;
+}
