@@ -78,6 +78,7 @@ Link:link {
 /* NAVBAR STYLING */
 .navbar-menu {
   grid-template-columns: repeat(7, 1fr);
+  /* height: 20px; */
   align-items: center;
 }
 
@@ -99,7 +100,8 @@ Link:link {
 }
 
 .hover-effect:hover {
-  background-color: #f4ce14;
+  background-color: lightgreen;
+  /* background-color: #f4ce14; */
   transition: 0.25s;
 }
 

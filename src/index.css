@@ -113,14 +113,15 @@ Link:link {
 }
 
 .hover-effect:hover {
-  background-color: #f4ce14;
+  background-color: lightgreen;
   transition: 0.25s;
 }
 
 .nav-image {
-  max-height: 4rem;
+  max-height: 3rem;
   margin-top: 0.7rem;
   margin-left: -1.25rem;
+  margin-bottom: 0.7rem;
 }
 
 /* CALL TO ACTION */
@@ -396,6 +397,19 @@ footer > menu {
   margin-bottom: 1.5rem;
 }
 
+.confirmation-form {
+  padding: 2rem 0 0.5rem 0;
+  text-align: center;
+ 
+}
+
+.confirmation-form > div {
+  margin-bottom: 1.5rem;
+}
+.confirmation-form >div> label {
+  text-align: left;
+}
+
 .confirmation-header {
   position: relative;
   text-align: center;
@@ -431,7 +445,9 @@ footer > menu {
 }
 
 .redirect-button:hover {
-  background-color: #f4ce14;
+  /* background-color: #f4ce14; */
+  background-color: lightgreen;
+
   color: #464646 !important;
   transition: 0.2s;
 }

@@ -15,7 +15,7 @@ export default function Navigation(props) {
             ) : (
                 <Link to="/">
                     <img
-                        src={require("../icons_assets/Logo .svg")}
+                        src={require("../icons_assets/little-lemon-logo-2.png")}
                         alt="Little Lemon logo"
                         className="nav-image"
                     ></img>
