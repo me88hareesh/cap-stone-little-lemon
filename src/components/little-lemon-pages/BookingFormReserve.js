@@ -298,6 +298,15 @@ export default function BookingFormReserve(props) {
 
             <div>
                 <button className="action-button" type="submit">Book Table</button>
+                &nbsp;
+
+                
+                <button className="action-button"  type="button" onClick={{}=()=>{
+                        if (window.confirm("Are you sure want to cancel booking ?") == true) {
+                            navigate('/')
+                          } 
+                }}>Cancel</button>
+
             </div>
         </form>
     )

@@ -48,13 +48,19 @@ export default function BookingFornContactAndPayment(props) {
             firstName: "",
             lastName: '',
             tel: "",
-            creditCardNo: 1,
+            creditCardNo: "",
             // otp: ""
         },
 
         validationSchema: DisplayingErrorMessagesSchema,
 
         onSubmit: values => {
+            contactData={
+                firstName:values.firstName,
+                lastName:values.lastName,
+                contact:values.tel,
+                email:values.email
+            }
             navigate("/confirmation", { state: { from: { primaryData:primaryData, contactData:contactData } } });
         },
     });
@@ -129,10 +135,10 @@ export default function BookingFornContactAndPayment(props) {
                     type="text"
                     id="tel"
                     style={btnStyles}
-                    placeholder="(xxx)-xxx-xxxx"
+                    placeholder="(xx)-xxxxxxxxxx"
                     value={values.tel}
                     minLength={10}
-                    maxLength={25}
+                    maxLength={12}
                     onChange={handleChange}
                 ></input>
                  {errors.tel && (
@@ -146,7 +152,7 @@ export default function BookingFornContactAndPayment(props) {
                     type="text"
                     id="creditCardNo"
                     style={btnStyles}
-                    placeholder="(xxx)-xxx-xxxx"
+                    placeholder="credit card number"
                     value={values.creditCardNo}
                     minLength={16}
                     maxLength={16}
@@ -159,11 +165,17 @@ export default function BookingFornContactAndPayment(props) {
 
 
             <div>
-                {/* <br></br>
-                <Link className="action-button" to="/confirmation" state={{ from: { primaryData, contactData } }} >
-                    Confirm</Link> */}
+                
                 <div>
                     <button className="action-button" type="submit">Confirm</button>
+                    &nbsp;
+                    <button className="action-button"  type="button" onClick={{}=()=>{
+                        if (window.confirm("Are you sure want to cancel booking ?") == true) {
+                            // text = "You pressed OK!";
+                            navigate('/')
+
+                          } 
+                }}>Cancel</button>
                 </div>
 
             </div>

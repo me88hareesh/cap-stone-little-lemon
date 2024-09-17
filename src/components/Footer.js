@@ -6,7 +6,7 @@ export default function Footer(params)  {
       <footer>
         <menu>
           <li className="img-footer">
-            <img
+            <img style={{borderRadius:'40px'}}
               src={require("../icons_assets/little-lemon-logo.jpg")}
               alt="Little Lemon logo"
             ></img>

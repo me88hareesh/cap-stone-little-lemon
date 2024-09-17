@@ -19,6 +19,7 @@ export default function Navigation(props) {
                         alt="Little Lemon logo"
                         className="nav-image"
                     ></img>
+                    
                 </Link>
             )}
             <Link className="hover-effect" to="/">

@@ -9,6 +9,7 @@ export default function Header(params) {
                 
                 <div className='headergrid-logo'>
                 <img src={companyLogo} alt='no image available' />
+                
                 </div>
                   
                 

@@ -1,7 +1,7 @@
 import SpecialCard from './card-info/SpecialCard'
-import GreekSalad from '../../../icons_assets/greek salad.jpg'
-import Bruschetta from '../../../icons_assets/bruchetta.svg'
-import LemonDessert from '../../../icons_assets/lemon dessert.jpg'
+import GreekSalad from '../../../icons_assets/specials/greek salad.jpg'
+import Bruschetta from '../../../icons_assets/specials/bruschetta.jpg'
+import LemonDessert from '../../../icons_assets/specials/lemon-dessert.jpeg'
 // import SpecialCard from './card-info/SpecialCard'
 import Carousel from './SpecialsCarousel';
 
@@ -10,7 +10,7 @@ export default function Specials(params) {
         <section className="specials">
             <article className="specials-topbar">
                 <h1>This weeks specials</h1>
-                <a className="action-button" href={require('../../../icons_assets/🦆 icon _hamburger menu.svg')} target="_blank" rel="noreferrer">Online Menu</a>
+                {/* <a className="action-button" href={require('../../../icons_assets/🦆 icon _hamburger menu.svg')} target="_blank" rel="noreferrer">Online Menu</a> */}
             </article>
 
             <section className="specials-cards">
