@@ -138,7 +138,7 @@
 
 
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage, useFormik } from 'formik';
 import { useNavigate } from "react-router-dom";
@@ -146,6 +146,7 @@ import * as Yup from 'yup';
 
 
 export default function BookingFormReserve(props) {
+
     let navigate = useNavigate();
 
     let btnStyles = {
@@ -158,13 +159,8 @@ export default function BookingFormReserve(props) {
     const [preferences, setPreferences] = useState("");
 
     let minDate = new Date().toISOString().split("T")[0];
-    let availableTimes = ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
-    const [finalTime, setFinalTime] = useState(
-        availableTimes?.map((times) => <option key={times}>{times}</option>)
-    );
-
-
-
+    // let availableTimes = ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
+    let availableTimes = [];
 
     function handleDateChange(e) {
         setDate(e.target.value);
@@ -176,7 +172,7 @@ export default function BookingFormReserve(props) {
     const DisplayingErrorMessagesSchema = Yup.object().shape({
         people: Yup.string().required("Required"),
         diningDate: Yup.string().required("Dining date is required"),
-        occasion: Yup.string().required("Required"),
+        occasion: Yup.string().required("Required").label("None"),
         preferences: Yup.string().required("Required")
     });
 
@@ -199,7 +195,41 @@ export default function BookingFormReserve(props) {
         },
     });
 
-    console.log(errors);
+    const seededRandom = function (seed) {
+        var m = 2 ** 35 - 31;
+        var a = 185852;
+        var s = seed % m;
+        return function () {
+            return (s = s * a % m) / m;
+        };
+    }
+
+    const fetchAPI = function (date) {
+        let result = [];
+        let random = seededRandom(date.getDate());
+
+        for (let i = 17; i <= 23; i++) {
+            if (random() < 0.5) {
+                result.push(i + ':00');
+            }
+            if (random() < 0.5) {
+                result.push(i + ':30');
+            }
+        }
+        return result;
+    };
+
+    
+
+    var result = fetchAPI(new Date());
+    result.forEach(element => {
+        availableTimes.push(element);
+    });
+
+    const [finalTime, setFinalTime] = useState(
+        availableTimes?.map((times) => <option key={times}>{times}</option>)
+    );
+
 
     return (
         <form autoComplete="off" onSubmit={handleSubmit} className="reservation-form">
@@ -219,6 +249,23 @@ export default function BookingFormReserve(props) {
                     style={btnStyles}
                     value={values.diningDate}
                     onChange={handleChange}
+                    // onChange={(e) => {getLotDetails(e.target.value)}}
+                    // onChange={(e)=>{
+                //     // alert(values.diningDate)
+                //     let timeStamp = Date.parse(e.target.value);
+                //     var date = new Date(timeStamp);
+
+                //     console.log(e);
+                //   var result=  fetchAPI(date)
+                //   result.forEach(element => {
+                //     alert(element);
+                //     availableTimes.push(element)
+                //   });
+
+                // //   handleChange();
+
+                // //   console.log(res);
+                // }}
                 ></input>
                 {errors.diningDate && (
                     <p className="input-feedback">{errors.diningDate}</p>
@@ -300,11 +347,11 @@ export default function BookingFormReserve(props) {
                 <button className="action-button" type="submit">Book Table</button>
                 &nbsp;
 
-                
-                <button className="action-button"  type="button" onClick={{}=()=>{
-                        if (window.confirm("Are you sure want to cancel booking ?") == true) {
-                            navigate('/')
-                          } 
+
+                <button className="action-button" type="button" onClick={{} = () => {
+                    if (window.confirm("Are you sure want to cancel booking ?") == true) {
+                        navigate('/')
+                    }
                 }}>Cancel</button>
 
             </div>

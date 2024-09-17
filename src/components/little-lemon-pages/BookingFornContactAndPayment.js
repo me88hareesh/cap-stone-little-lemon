@@ -33,11 +33,13 @@ export default function BookingFornContactAndPayment(props) {
     }
 
     const DisplayingErrorMessagesSchema = Yup.object().shape({
-        firstName: Yup.string().required("Required"),
-        lastName: Yup.string().required("Required"),
-        email: Yup.string().required("Required"),
-        tel: Yup.string().required("Required"),
-        creditCardNo: Yup.string().required("Required"),
+        firstName: Yup.string().required("First name is Required"),
+        lastName: Yup.string().required("Last name is Required"),
+        email: Yup.string()
+        .email("Email is invalid")
+        .required("Email is Required"),
+        tel: Yup.string().required("Contact is Required"),
+        creditCardNo: Yup.string().required("Credit card details is Required"),
         // otp: Yup.string().required("Required")
     });
 

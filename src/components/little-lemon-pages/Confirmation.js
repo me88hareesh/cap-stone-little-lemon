@@ -4,8 +4,17 @@ export default function Confirmation(params) {
 
     const location = useLocation();
     const { from } = location.state
+    let formData=from;
+    let isResponse=false;
+    const submitAPI = function (formData) {
+        isResponse=true;
+        return true;
+    };
 
-    return (<>
+    submitAPI(formData);
+
+    return (< >
+   
         <form className="confirmation-form">
             <div style={{ border: '2px solid wheat', fontSize: '20px', backgroundColor: 'wheat' }}>
                 <p><b>We always have a seat for your !!!</b>
@@ -14,16 +23,7 @@ export default function Confirmation(params) {
                 </p>
 
             </div>
-            {/* <div>
-                <img
-                    src={require("../../../src/images/lemon.gif")}
-                    alt="Little Lemon logo"
-                    width={80}
-                    style={{ borderRadius: '50px' }}
-                    className="nav-image"
-                ></img>
 
-            </div> */}
             <div style={{ border: '1px solid wheat', width: '500px', margin: '0 auto', backgroundColor: 'wheat', marginBottom: '1em', textAlign: 'left', paddingLeft: '25%' }}>
                 <div>
                     <label htmlFor="fName">Date:</label> <span><b>{from.primaryData.date}</b></span>
